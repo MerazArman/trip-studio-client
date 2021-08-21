@@ -28,13 +28,25 @@ const fakeInfo = [
         title: 'Eco friendly',
         description:'Our company is reliable, and our work is trusted. .',
         img: <FaCreativeCommonsBy></FaCreativeCommonsBy>,
+    },
+    {
+        key: '1a',
+        title: 'Expert Photographer',
+        description:'Our company is reliable, and our work is trusted.',
+        img: <SiAffinityphoto></SiAffinityphoto>,
+    },
+    {
+        key: '1a',
+        title: 'Eco friendly',
+        description:'Our company is reliable, and our work is trusted. .',
+        img: <FaCreativeCommonsBy></FaCreativeCommonsBy>,
     }
 ]
 
 
 const ChoosUs = () => {
     return (
-        <section style={{ border: '1px solid red' }} className="mt-5">
+        <section  className="mt-5">
             <div className="row container mx-auto shadow-lg">
                 {
                     fakeInfo.map(info => 

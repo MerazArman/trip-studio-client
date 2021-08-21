@@ -19,7 +19,7 @@ import "react-pro-sidebar/dist/css/styles.css";
 import "./mainSidebar.css";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../App";
-import logo1 from '../../../images/eagle-1.PNG'
+import logo1 from '../../../images/trip-logo.PNG'
 
 
 
@@ -39,7 +39,7 @@ const MainSidebar = () => {
   };
 
   useEffect(() => {
-    fetch('https://calm-hollows-51020.herokuapp.com/isAdmin', {
+    fetch('https://peaceful-badlands-83974.herokuapp.com/isAdmin', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ email: userLogged.email })
@@ -80,13 +80,13 @@ const MainSidebar = () => {
             <Link to="/allServices"  className="item-text">Services List </Link>
           </MenuItem>
           <MenuItem icon={< GoSettings />}>
-            <Link to="/allOrderList"  className="item-text">Orders List</Link>
+            <Link to="/AllBookings"  className="item-text">Orders List</Link>
           </MenuItem>
           <MenuItem icon={< AiOutlineUsergroupAdd />}>
             <Link to="/makeAdmin"  className="item-text">Add Admin</Link>
           </MenuItem>
           <MenuItem icon={< AiOutlineAppstoreAdd />}>
-            <Link to="/addNewService"  className="item-text"> Add Service</Link>
+            <Link to="/AddService"  className="item-text"> Add Service</Link>
           </MenuItem>
           <MenuItem active={true} icon={< BiCog />}>
           <Link to="/allServices" className="item-text">  Settings </Link>
@@ -94,7 +94,7 @@ const MainSidebar = () => {
            </div>
          }
             <MenuItem icon={< FaShoppingCart />}>
-            <Link to="/shortOrderList"  className="item-text">Bookings</Link>
+            <Link to="/UsersBookings"  className="item-text">Bookings</Link>
           </MenuItem>
           <MenuItem icon={< MdRateReview/>}>
             <Link to="/addNewReview"  className="item-text">Review</Link>

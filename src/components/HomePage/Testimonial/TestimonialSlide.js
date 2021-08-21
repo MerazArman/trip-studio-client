@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import { FaQuoteLeft } from 'react-icons/fa';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
+import './testimonial.css'
 
 
 const settings = {
@@ -13,8 +14,8 @@ const settings = {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 4000,
-    autoplaySpeed: 4000,
+    speed: 1000,
+    autoplaySpeed: 2000,
     cssEase: "linear",
     responsive: [
        
@@ -58,7 +59,7 @@ const TestimonialSlide = () => {
 
     const [testimonialsData, setTestimonialsData] = useState([]);
     // const handleAddPd = () => {
-    //     fetch(`http://localhost:4050/addAllReviews`, {
+    //     fetch(`https://peaceful-badlands-83974.herokuapp.com/addAllReviews`, {
     //         method:'POST',
     //         headers: { 'content-type': 'application/json' },
     //         body: JSON.stringify(testimonialsData)
@@ -84,13 +85,13 @@ const TestimonialSlide = () => {
                            
                             <div className="px-3 ml-3 pb-2 " style={{border: '1px solid #999'}}>
                                 <div style={{}} className="testimonial-icon  d-flex align-items-center justify-content-center">
-                                <FaQuoteLeft  className="text-light  "></FaQuoteLeft>
+                                <FaQuoteLeft  className=""></FaQuoteLeft>
                                 </div>
                             <div className="">
                                 <p>{testimonialInfo.comment} </p>
                                 <div>
                                     <h5>{testimonialInfo.reviewName} </h5>
-                                    <h6>{testimonialInfo.work} </h6>
+                                    <h4>{testimonialInfo.work} </h4>
                                     <Box component="fieldset" mb={3} borderColor="transparent">
                                     <Rating
                                         name="simple-controlled"

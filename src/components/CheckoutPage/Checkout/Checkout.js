@@ -29,7 +29,7 @@ const Checkout = () => {
     const [formState, setFormState] = useState(true);
     const { serviceId } = useParams();
     useEffect(() => {
-        fetch(`http://localhost:4050/showAllServices/${serviceId}`)
+        fetch(`https://peaceful-badlands-83974.herokuapp.com/showAllServices/${serviceId}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

@@ -10,7 +10,11 @@ console.log(photographyService);
 
 const history = useHistory()
 const serviceBuyHandler = (id) => {
-    history.push(`/checkoutPage${id}`)
+    history.push(`/checkoutPage/${id}`)
+}
+
+const serviceDetailsHandler = (key) => {
+    history.push(`/servicesDetailsPage/${key}`)
 }
 
     return (
@@ -26,7 +30,7 @@ const serviceBuyHandler = (id) => {
                                         <h4>Popular House Plant</h4>
                                         <h1>${photographyService.price} </h1>
                                         <p> {photographyService.description}</p>
-                                        <button>VIEW MORE</button>
+                                        <button onClick={() => serviceDetailsHandler(photographyService._id)}>VIEW MORE</button>
                                         <button onClick={() => serviceBuyHandler(photographyService._id)}>BUY NOW</button>
                                     </div>
                                 </div>

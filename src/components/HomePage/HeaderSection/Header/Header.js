@@ -4,7 +4,7 @@ import HeaderMainContent from '../HeaderMainContent/HeaderMainContent';
 
 const Header = () => {
     return (
-        <header style={{border: '1px solid red'}}>
+        <header >
             <Navbar></Navbar>
             <HeaderMainContent></HeaderMainContent>
         </header>

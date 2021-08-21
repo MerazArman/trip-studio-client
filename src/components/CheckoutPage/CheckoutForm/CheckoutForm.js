@@ -1,6 +1,7 @@
 import React from 'react';
 // import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -10,13 +11,13 @@ const CheckoutForm = ({addToCart, userLogged}) => {
 const { register, handleSubmit, formState: { errors } } = useForm();
 
 
-
+const history = useHistory()
 
 const onSubmit = (data) => {
     // console.log(data);
-const usersBookings = { ...addToCart, ...data }
+let usersBookings = { ...addToCart, ...data }
 console.log(usersBookings);
-    fetch(`http://localhost:4050/addUsersBooking`,{
+    fetch(`https://peaceful-badlands-83974.herokuapp.com/addUsersBooking`,{
         method: 'POST',
         headers:{'Content-Type': 'application/json'},
         body:JSON.stringify(usersBookings)
@@ -25,7 +26,8 @@ console.log(usersBookings);
         .then(data => {
             console.log(data);
         })
-        alert("your Booking done")
+        alert("your Booking Successfully Created")
+        history.push('/')
 }
 
 
@@ -35,11 +37,11 @@ console.log(usersBookings);
                 <form onSubmit={handleSubmit(onSubmit)} className="container">
            <div className="w-50 mx-auto mt-5">
            <div className="form-group">
-                    <input type="text" className="form-control" value={userLogged.name}  placeholder="Your Name" {...register("name", { required: true, maxLength: 80 })} />
+                    <input type="text" className="form-control"   placeholder="Your Name" {...register("name", { required: true, maxLength: 80 })} />
                     {errors.name && <span className="text-danger">This field is required</span>} 
                     </div>
                     <div className="form-group">
-                    <input type="email" placeholder="Email"  className="form-control" value={userLogged.email}   {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+                    <input type="email" placeholder="Email"  className="form-control"   {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
                     {errors.email && <span className="text-danger">This field is required</span>}
                     </div>
                     <div className="form-group">

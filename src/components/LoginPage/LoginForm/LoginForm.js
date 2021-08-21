@@ -125,7 +125,7 @@ const LoginForm = () => {
 
     return (
         <section>
-            <button className="btn btn-danger" onClick={googleSignOut}>Sign out</button>
+            {/* <button className="btn btn-danger" onClick={googleSignOut}>Sign out</button> */}
             <div class="container mt-5">
                 <div class="row d-flex align-items-center login-container">
                     <div className="col-md-7">

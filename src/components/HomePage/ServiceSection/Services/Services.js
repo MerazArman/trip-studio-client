@@ -43,7 +43,7 @@ const Services = () => {
 
 const [photography, setPhotography] = useState([])
 useEffect(() => {
-    fetch(`http://localhost:4050/showAllServices`)
+    fetch(`https://peaceful-badlands-83974.herokuapp.com/showAllServices`)
     .then(res => res.json())
     .then(data => setPhotography(data))
 },[])

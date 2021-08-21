@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-// import fakePrice from '../../../ServicesDetailsPage/PricesType/fakePrice';
-// import AdminNavbar from '../../../Shared/AdminNavbar/AdminNavbar';
-// import MainSidebar from '../../../Shared/Sidebar/MainSidebar';
+import AdminNavbar from '../../../Shared/AdminNavbar/AdminNavbar';
+import MainSidebar from '../../../Shared/Sidebar/MainSidebar';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -12,12 +11,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { Checkbox } from '@material-ui/core';
-import { useForm } from 'react-hook-form';
-// import Parcel from './Parcel';
-// import { useForm } from 'react-hook-form';
 
-// import { useContext } from 'react';
-// import { OrdersStatus, UserContext } from '../../../../App';
 
 
 
@@ -35,11 +29,9 @@ const useStyles = makeStyles({
 
 const AllBookings = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-
     const [allOrders, setAllOrders] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:4050/showAllBookings`)
+        fetch(`https://peaceful-badlands-83974.herokuapp.com/showAllBookings`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -48,47 +40,24 @@ const AllBookings = () => {
             })
     }, []);
 
-    // const statusChange = () =>{
-    //     const orders = allOrders.map(order => order._id)
-    //     fetch(`http://localhost:4050/updateStatus/:${orders}`,)
-    // }
+    const [inputStatus, setInputStatus] = useState({
+        name:''
+    });
+    const inputValidate = (e) =>{
+        let userInfo = { ...inputStatus }
+        userInfo[e.target.name] = e.target.value;
+        setInputStatus(userInfo)
+    }
 
 
     const [status, setStatus] = useState({});
-    //   const [statusType, setStatusType] = useContext(OrdersStatus)
-    // fetch(`http://localhost:4050/updateStatus/:${orders}`, {
-    //     method: 'PATCH',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(selectStatus)
-    // })
-    //     .then(response => response.json())
-    //     .then(result => {
-    //         console.log('update');
-    //     })
+   
 
-    // const [status, setStatus] = useState('');
-    // const statusInputHandle = (e) =>{
-    //     setStatus(e.target.value)
-    //     console.log(status);
-    // }
 
-    const handleStatusChange = (id) => {
-        //  fetch(`http://localhost:4050/updateStatus/${id}`, {
-        //     method: 'PATCH',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(status)
-        // })
-        //     .then(response => response.json())
-        //     .then(result => {
-        //         console.log('update', result);
-        //     })
-        console.log(id, 'update btn not working');
-
-    }
 
     const statusUpdateHandler = (id) => {
         console.log('id', id);
-        fetch(`http://localhost:4050/showAllBookings/${id}`)
+        fetch(`https://peaceful-badlands-83974.herokuapp.com/showAllBookings/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -97,17 +66,19 @@ const AllBookings = () => {
 
     }
 
-    const onSubmit = (data) => {
-        console.log(data);
-            fetch(`http://localhost:4050/updateStatus/${status._id}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(result => {
-                console.log('update', result);
-            })
+    const statusHandler = (id) => {
+        let updateInfo = {...status, ...inputStatus}
+        console.log(updateInfo, id);
+        //     fetch(`https://peaceful-badlands-83974.herokuapp.com/updateStatus/${id}`, {
+        //     method: 'PATCH',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify()
+        // })
+        // .then(response => response.json())
+        // .then(result => {
+        //         console.log('update', result);
+        //     })
+        
      }
 
 
@@ -128,13 +99,13 @@ const AllBookings = () => {
 
     return (
         <main style={{}} className="">
-            {/* <div className="mb-5">
+            <div className="mb-5">
                 <AdminNavbar></AdminNavbar>
             </div>
-            <MainSidebar ></MainSidebar> */}
+            <MainSidebar ></MainSidebar>
 
 
-            <Paper className={`${classes.root} container responsive-dashboard`} >
+            <Paper className={`${classes.root} container responsive-dashboard`}  style={{ width: '80%', marginLeft: '20%', marginTop: '100px', border: '', boxShadow: '5px 5px 15px 5px rgba(0, 0, 0, 0.2)' }}>
                 <TableContainer className={classes.container}>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
@@ -175,10 +146,9 @@ const AllBookings = () => {
                                                 {orders.status}
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <form onSubmit={handleSubmit(onSubmit)}>
+                                                <form onSubmit={() => statusHandler(status._id)}>
                                                     <li className="form-group">  
-                                                        <input type="text" className="form-control" placeholder={status.status} style={{color:'green'}} {...register("status", { required: true, maxLength: 100 })} />
-                                                        {errors.status && <span className="text-danger">This field is required</span>} 
+                                                        <input type="text" className="form-control" name="status" placeholder={status.status} style={{color:'green'}} onBlur={inputValidate} />
                                                         </li>
                                                     <li className="form-group"><input className="btn btn-info" type="submit" value="Update" /> </li>
                                                 </form>
@@ -210,16 +180,3 @@ const AllBookings = () => {
 export default AllBookings;
 
 
-// style={{ width: '80%', marginLeft: '20%', marginTop: '100px', border: '', boxShadow: '5px 5px 15px 5px rgba(0, 0, 0, 0.2)' }}
-{/* <button className="btn btn-info" onClick={() => statusUpdateHandler(orders._id)}> {orders.status} </button>   */ }
-
-{/* <div className="dropdown">
-                                            <button  class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                {orders.services.status}
-                                            </button>
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <li> <input className="dropdown-item form-control" onBlur={statusInputHandle} name="status" type="text" placeholder="Status"/> </li>
-                                                <li> <button className="btn btn-info dropdown-item " style={{backgroundColor:'rgb(1, 210, 142)', color:'#fff'}} onClick={() => handleStatusChange(orders._id)}> Update </button></li>
-                                               
-                                            </ul>
-                                        </div> */}

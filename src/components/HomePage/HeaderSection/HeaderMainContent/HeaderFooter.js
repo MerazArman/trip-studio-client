@@ -8,7 +8,7 @@ import { GoDeviceCamera } from 'react-icons/go';
 const HeaderFooter = () => {
     return (
         <div className="footer-box w-75 mx-auto">
-            <div className="row " style={{border: '1px solid red'}}>
+            <div className="row " >
                 <div className="col-md-7 ">
                     <h5 className="text-light ml-5 mt-5">We are visual production company, specializing in videography and photography </h5>
 

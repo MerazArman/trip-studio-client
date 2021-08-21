@@ -26,7 +26,7 @@ const Contact = () => {
         <div className="">
             <div className="section-header text-center text-white mb-5">
             <p className="">Always  connect with us</p>
-                 <h5 style={{color:'#323EBE'}}>Contact</h5>
+                 <h5 >Contact</h5>
                  <div className="testimonial-head mx-auto" data-aos="fade-left"></div>
                  
             </div>

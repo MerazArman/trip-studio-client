@@ -3,7 +3,7 @@ import About from '../About/About';
 
 const AboutSection = () => {
     return (
-        <main style={{border: '1px solid red'}}>
+        <main >
             <About></About>
         </main>
     );

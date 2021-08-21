@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
-// import AdminNavbar from '../../../Shared/AdminNavbar/AdminNavbar';
-// import MainSidebar from '../../../Shared/Sidebar/MainSidebar';
-import { makeStyles } from '@material-ui/core/styles';
+import AdminNavbar from '../../../Shared/AdminNavbar/AdminNavbar';
+import MainSidebar from '../../../Shared/Sidebar/MainSidebar';
+import { makeStyles,withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -12,6 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Checkbox } from '@material-ui/core';
 import TablePagination from '@material-ui/core/TablePagination';
+import { useHistory } from 'react-router-dom';
 
 
 const useStyles = makeStyles({
@@ -23,11 +24,22 @@ const useStyles = makeStyles({
     },
 });
 
+const StyledTableCell = withStyles((theme) => ({
+    head: {
+      backgroundColor: '#083A73',
+      color: theme.palette.common.white,
+    },
+    body: {
+      fontSize: 14,
+    },
+  }))(TableCell);
 
 
 
 const AllServices = () => {
 
+
+    const history = useHistory()
     const classes = useStyles()
     const [allServices, setAllServices] = useState([]);
 
@@ -45,7 +57,7 @@ const AllServices = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:4050/showAllServices`)
+        fetch(`https://peaceful-badlands-83974.herokuapp.com/showAllServices`)
             .then(res => res.json())
             .then(data => setAllServices(data))
     }, [])
@@ -53,42 +65,43 @@ const AllServices = () => {
 
     const deleteServiceHandler = (serviceId) =>{
         console.log('key', serviceId);
-        // fetch(`https://calm-hollows-51020.herokuapp.com/deleteService/${serviceId}`, {
-        //   method: 'DELETE'
-        // })
-        // .then(res => res.json())
-        // .then(data => {
-        //   console.log(data);
-        //   alert('are you sure you want to delete?')
-        // })
+        fetch(`https://peaceful-badlands-83974.herokuapp.com/deleteService/${serviceId}`, {
+          method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+        })
+        alert('are you sure you want to delete?')
+        history.push('/')
   }
 
 
     // console.log(allServices);
     return (
         <main>
-            {/* <div className="mb-5">
+            <div className="mb-5">
                 <AdminNavbar></AdminNavbar>
             </div>
-            <MainSidebar ></MainSidebar> */}
+            <MainSidebar ></MainSidebar>
 
-            <Paper className={`${classes.root} container`} >
+            <Paper className={`${classes.root} container`} style={{ width: '80%', marginLeft: '20%', marginTop: '100px', border: ''}}>
                 <TableContainer className={classes.container}>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead>
                          
-                                <TableRow>
-                                    <TableCell padding="checkbox">
+                                <TableRow style={{backgroundColor: '#083A73'}}>
+                                    <StyledTableCell style={{backgroundColor: '#083A73'}} padding="checkbox">
                                         <Checkbox
                                             inputProps={{ 'aria-label': 'select all desserts' }}
                                         />
-                                    </TableCell>
-                                    <TableCell align="left">Service</TableCell>
-                                    <TableCell align="left"> Photographer</TableCell>
-                                    <TableCell align="left"> Service Id</TableCell>
-                                    <TableCell align="center">Price</TableCell>
-                                    <TableCell align="left">Update</TableCell>
-                                    <TableCell align="left">Delete</TableCell>
+                                    </StyledTableCell>
+                                    <StyledTableCell  align="left">Service</StyledTableCell>
+                                    <StyledTableCell align="left"> Photographer</StyledTableCell>
+                                    <StyledTableCell align="left"> Service Id</StyledTableCell>
+                                    <StyledTableCell align="center">Price</StyledTableCell>
+                                    <StyledTableCell align="center">Update</StyledTableCell>
+                                    <StyledTableCell align="center">Delete</StyledTableCell>
                                 </TableRow>
          
                         </TableHead>
@@ -104,8 +117,8 @@ const AllServices = () => {
                                     <TableCell align="left">{service.photographer}</TableCell>
                                     <TableCell align="left">{ service._id}</TableCell>
                                     <TableCell align="center">{service.price}</TableCell>
-                                    <TableCell align="center"><AiFillEdit style={{ color: 'green' }}></AiFillEdit></TableCell>
-                                    <TableCell align="center"   onClick={() => deleteServiceHandler(service._id)}><AiFillDelete style={{ color: 'red', cursor:'pointer' }}></AiFillDelete></TableCell>
+                                    <TableCell align="center"> <button className="btn btn-sign"> Update </button> </TableCell>
+                                    <TableCell align="center">  <button className="btn btn-sign" onClick={() => deleteServiceHandler(service._id)}> Delete </button> </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

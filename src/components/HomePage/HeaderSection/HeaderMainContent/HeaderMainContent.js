@@ -4,7 +4,7 @@ import HeaderFooter from './HeaderFooter';
 import './headerMain.css'
 const HeaderMainContent = () => {
     return (
-        <section style={{border: '1px solid blue', backgroundColor: '#F4F4F4'}} className="">
+        <section className="">
               <div className="row " style={{backgroundColor: '#F4F4F4'}}>
               <div className="col-md-6 shadow-lg pb-5">
                 <img src={baner} class="img-fluid " alt="..."  />

@@ -7,25 +7,26 @@ import './testimonial.css'
 const Testimonial = () => {
 
     return (
-        <section className=" py-5 mt-3 text-light" style={{ border: '', backgroundColor: '#343A40' }}>
+        <section className=" py-5 mt-3 text-light" style={{ border: '', backgroundColor: '' }}>
 
             <div className="container-fluid ">
                 <div className="text-center">
-                    <h6 className="text-uppercase ">Testimonial</h6>
+                    <h5 className="text-uppercase ">Testimonial</h5>
                     <div className="testimonial-head mx-auto"></div>
-                    <h3 className="text-light"> Kinds Words From Clients</h3>
+                    <h3 className=""> Kinds Words From Clients</h3>
                 </div>
 
                 <div className="row">
-                    <div className="col-md-4">
-                        <img src={testimonialImg} alt="" />
-                    </div>
-                    <div className="col-md-8">
+                <div className="col-md-7">
                         <div className="px-4">
 
                             <TestimonialSlide></TestimonialSlide>
                         </div>
                     </div>
+                    <div className="col-md-5 border-start pt-5">
+                        <img src={testimonialImg} className="img-fluid" alt="" />
+                    </div>
+                    
                 </div>
 
             </div>

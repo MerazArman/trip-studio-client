@@ -1,16 +1,17 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 import AdminNavbar from '../../../Shared/AdminNavbar/AdminNavbar';
 import MainSidebar from '../../../Shared/Sidebar/MainSidebar';
 
 
 const MakeAdmin = () => {
 
+    const history = useHistory()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
-
-        fetch('https://calm-hollows-51020.herokuapp.com/addNewAdmin', {
+        fetch('https://peaceful-badlands-83974.herokuapp.com/addNewAdmin', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(data)
@@ -20,7 +21,8 @@ const MakeAdmin = () => {
             
             console.log(admin)
         })
-        alert('your admin successfully updated')
+        alert('New Admin Successfully Adedd')
+        history.push('/')
     };
     console.log(errors);
 
@@ -43,7 +45,7 @@ const MakeAdmin = () => {
                     </div>
 
                     <div className="mb-3">
-                        <input className="btn btn-primary" type="submit" />
+                        <input className="btn btn-all" type="submit" />
                     </div>
 
 

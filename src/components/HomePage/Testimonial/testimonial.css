@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,500,700);
+
 .testimonial-icon{
     background-color:#01D28E;
    width:20%;
@@ -12,3 +14,23 @@
     border-radius: 2px;
     width:90px
 }
+
+h4 { 
+    font-family: "Raleway";
+     margin: 0;
+     color: #727272;
+     text-transform: uppercase;
+     font-weight: 500;
+     font-size: 12px
+   }
+p { 
+    font-family: "Raleway";
+     font-size: 12px; 
+     line-height: 20px;
+     color: #727272;
+     padding: 20px 0;
+     margin: 0;
+  }
+
+
+  

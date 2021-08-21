@@ -13,9 +13,10 @@ import Paper from '@material-ui/core/Paper';
 
 
 
+
 const StyledTableCell = withStyles((theme) => ({
     head: {
-      backgroundColor: '#fd6001',
+      backgroundColor: '#083A73',
       color: theme.palette.common.white,
     },
     body: {
@@ -43,6 +44,7 @@ const BookingsList = ({bookings}) => {
 
     return (
         <div className="container-fluid">
+
            <div className=" content-margin">
            <h1> Orders List </h1>
             <TableContainer component={Paper}>
