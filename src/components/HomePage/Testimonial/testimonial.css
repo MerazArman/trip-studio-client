@@ -1,0 +1,14 @@
+.testimonial-icon{
+    background-color:#01D28E;
+   width:20%;
+   height: 9vh;
+   font-size:1.7rem;
+   box-sizing: border-box;
+   transform: translateY(-22px);
+}
+
+.testimonial-head{
+    border-bottom: 5px solid #01D28E;
+    border-radius: 2px;
+    width:90px
+}

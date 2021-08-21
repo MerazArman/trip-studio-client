@@ -1,0 +1,14 @@
+.li-style ul li{
+    list-style-type: none;
+    margin-top:5px;
+}
+
+.about-img-content{
+    width: 30%;
+    height: 22%;
+    background-color: #1F2B7B;
+    color: whitesmoke;
+    box-sizing: border-box;
+    transform: translate(-10px, -100px);
+    position:absolute;
+}

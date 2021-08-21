@@ -1,0 +1,22 @@
+.social-media .icon{
+    height: 40px;
+    width: 40px;
+    color: #8ED1FC;
+    border-radius: 50%;
+    border: 1px solid #8ED1FC;
+    padding: 10px;
+}
+.social-media .icon:hover{
+    background-color: #8ED1FC ;
+    color:white;
+}
+
+
+
+/* .footer-bg{
+    background-image: url('../../../images/svg.png');
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:bottom;
+    
+} */

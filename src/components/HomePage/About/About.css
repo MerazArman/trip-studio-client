@@ -1,0 +1,10 @@
+.about-img-content{
+    width: 30%;
+    height: 22vh;
+    background-color: #1F2B7B;
+    color: whitesmoke;
+    box-sizing: border-box;
+    transform: translate(76px, -300px);
+   
+}
+

@@ -1,0 +1,9 @@
+.header-foot-design{
+    transform: translate(-0%, -50%);
+    position:static;
+}
+
+.footer-box{
+    background-color: #1F2B7B;
+    color:white;
+}

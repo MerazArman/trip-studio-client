@@ -1,0 +1,27 @@
+.zero1:after {
+  border: 3px solid rgb(1, 210, 142);
+}
+.zero2:after {
+  border: 3px solid #323EBE;
+}
+
+
+.zero:after {
+  content: "";
+  background: #fff;
+  position: absolute;
+  right: 59px;
+  top: 27px;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px
+}
+
+
+.progress-bar1{
+  background-color: rgb(1, 210, 142);
+}
+
+.progress-bar2{
+  background-color: #323EBE;
+}
